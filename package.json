@@ -7,10 +7,12 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.13.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-service": "~4.5.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "worker-plugin": "^5.0.0"
   }
 }
