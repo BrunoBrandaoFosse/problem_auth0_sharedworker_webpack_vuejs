@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h3>Problem with Auth0</h3>
-    <p>I am having trouble using Auth0 together with Worker-Plugin to use SharedWorker in VueJs.</p>
+    <p>I've been having trouble using Auth0 with Worker-Plugin in VueJs</p>
   </div>
 </template>
 
