@@ -1,6 +1,24 @@
 console.clear();
 
-import wk from "./worker";
+import createAuth0Client from "@auth0/auth0-spa-js";
+// import { Auth0Client } from '@auth0/auth0-spa-js';
+
+import Worker from "worker-loader!./worker.js";
+
+// const worker = new Worker();
+
+const worker = new SharedWorker((fn=>fn.match(/"(.*?)"/)[1])(""+Worker));
+
+// import MyWorker from './worker';
+// let mySharedWorker = new SharedWorker((fn=>fn.match(/"(.*?)"/)[1])(""+MyWorker));
+// console.log("🚀 ~ file: start.js ~ line 8 ~ mySharedWorker", mySharedWorker)
+
+// import sharedWorker from 'shared-worker!./worker.js';
+
+// const worker = new sharedWorker();
+
+// import wk from "./worker";
+// import("./worker").then(console.log);
 import params from "./params";
 
 import {start, showParams} from "./functions";
@@ -46,7 +64,7 @@ var blobParams = new Blob([`(${showParams.toString()})()`], { type: "application
 // var blob = new Blob([wk]);
 // const worker = new SharedWorker(URL.createObjectURL(blob), { type: "module" });
 
-const worker = new SharedWorker('data:application/javascript,' + encodeURIComponent(wk));
+// const worker = new SharedWorker('data:application/javascript,' + encodeURIComponent(onconnect));
 
 // const worker = new SharedWorker("./worker.js", { type: "module" });
 worker.port.start();
@@ -60,8 +78,8 @@ worker.port.postMessage("send data to worker");
 // console.log("%c~ counter_worker..:", "font-weight:bold;color:chartreuse;", params.counter_worker);
 
 // worker.port.postMessage({ type: "blob", data: blobUrl });
-worker.port.postMessage({ type: "blob", data: blobStart });
-worker.port.postMessage({ type: "blob", data: blobParams });
+// worker.port.postMessage({ type: "blob", data: blobStart });
+// worker.port.postMessage({ type: "blob", data: blobParams });
 // setInterval(() => {
 //     worker.port.postMessage({ type: "blob", data: blobStart });
 //     worker.port.postMessage({ type: "blob", data: blobParams });
@@ -84,7 +102,7 @@ worker.port.postMessage({ type: "blob", data: blobParams });
 // }, 10000);
 
 worker.port.onmessage = ({ data }) => {
-    // console.log("%c🚀 ~ received data from worker", "font-size:16px;font-weight:bold;");
-    // console.log(data);
+    console.log("%c🚀 ~ received data from worker", "font-size:16px;font-weight:bold;");
+    console.log(data);
 };
 
