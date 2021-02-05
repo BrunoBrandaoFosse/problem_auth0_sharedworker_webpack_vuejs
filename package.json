@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.13.6",
-    "shared-worker-loader": "^0.2.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
